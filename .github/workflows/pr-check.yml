@@ -6,7 +6,7 @@ on:
 jobs:
     test-challange:
         name: Test pipeline
-        runs-on: ubuntu-20.04 # this version will effect the version of some software such as the AWS CLI
+        runs-on: ubuntu-20.04
         steps:
         - uses: actions/checkout@v4
 
