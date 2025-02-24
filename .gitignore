@@ -1,0 +1,7 @@
+.cache
+.*.swp
+result
+result-git
+.bash_history
+build
+outputs

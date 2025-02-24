@@ -1,0 +1,12 @@
+{
+	"user_id" : 1,
+	"name": "JULIO",
+	"emails": [
+		"julio@example.com",
+		"julio+spam@example.com"
+	],
+	"phones" : [
+		"8585550011",
+		"8585551001"
+	]
+}
