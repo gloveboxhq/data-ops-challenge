@@ -1,0 +1,18 @@
+[
+	{
+		"user_id": 1,
+		"policy_number" : "ABC123",
+		"carrier" : "shield",
+		"policy_type" : "auto",
+		"effective_date" : "2025-01-01",
+		"expiration_date" : "2026-01-01"
+	},
+	{
+		"user_id": 1,
+		"policy_number" : "QWE123",
+		"carrier" : "shield",
+		"policy_type" : "home",
+		"effective_date" : "2025-02-01",
+		"expiration_date" : "2026-02-01"
+	}
+]

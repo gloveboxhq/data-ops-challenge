@@ -1,0 +1,17 @@
+user_id,policy_number,carrier,policy_type,effective_date,expiration_date,user_id,name,email,phone
+1,ABC123,shield,auto,2025-01-01,2026-01-01,1,JULIO,julio@example.com,
+1,ABC123,shield,auto,2025-01-01,2026-01-01,1,JULIO,julio+spam@example.com,
+1,ABC123,shield,auto,2025-01-01,2026-01-01,1,JULIO,,8585550011
+1,ABC123,shield,auto,2025-01-01,2026-01-01,1,JULIO,,8585551001
+1,QWE123,shield,home,2025-02-01,2026-02-01,1,JULIO,julio@example.com,
+1,QWE123,shield,home,2025-02-01,2026-02-01,1,JULIO,julio+spam@example.com,
+1,QWE123,shield,home,2025-02-01,2026-02-01,1,JULIO,,8585550011
+1,QWE123,shield,home,2025-02-01,2026-02-01,1,JULIO,,8585551001
+2,XYZ-001,shield,auto,2025-01-01,2026-01-01,2,Jason,jason@example.com,
+2,XYZ-001,shield,auto,2025-01-01,2026-01-01,2,Jason,jason+spam@example.com,
+2,XYZ-001,shield,auto,2025-01-01,2026-01-01,2,Jason,,8585550022
+2,XYZ-001,shield,auto,2025-01-01,2026-01-01,2,Jason,,8585552002
+2,XYZ-002,shield,home,2025-02-01,2026-02-01,2,Jason,jason@example.com,
+2,XYZ-002,shield,home,2025-02-01,2026-02-01,2,Jason,jason+spam@example.com,
+2,XYZ-002,shield,home,2025-02-01,2026-02-01,2,Jason,,8585550022
+2,XYZ-002,shield,home,2025-02-01,2026-02-01,2,Jason,,8585552002
