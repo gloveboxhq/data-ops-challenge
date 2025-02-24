@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+echo hello
+
 jq -rs '
 	[ "user_id", "name", "email", "phone" ],
 	(
