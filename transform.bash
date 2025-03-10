@@ -6,9 +6,10 @@ jq -rs '
 	(
 		.[] |
 		.user_id as $id |
-		.name as $name | (
-			( .emails[] | [ $id , $name , .   , null ] ),
-			[ "TODO", "add", "phone", "here" ]
+		.name as $name |
+		(
+			(.emails[]? | [ $id , $name , . , null ]),
+			(.phones[]?  | [ $id , $name , null, . ])
 		)
 	)
 	| @csv
@@ -30,7 +31,4 @@ jq -rs '
 	| @csv
 ' tests/input/policies-by-user/*.json > $BUILD_DIR/policies.csv
 
-echo "TODO xsv join" | tee $BUILD_DIR/user-policies.csv
-
-
-
+xsv join user_id "$BUILD_DIR/policies.csv" user_id "$BUILD_DIR/users.csv" > "$BUILD_DIR/user-policies.csv"
