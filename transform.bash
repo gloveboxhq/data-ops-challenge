@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+
 set -euo pipefail
 
 jq -rs '
@@ -31,4 +32,4 @@ jq -rs '
 	| @csv
 ' tests/input/policies-by-user/*.json > $BUILD_DIR/policies.csv
 
-xsv join user_id "$BUILD_DIR/policies.csv" user_id "$BUILD_DIR/users.csv" > user-policies.csv
+xsv join user_id "$BUILD_DIR/policies.csv" user_id "$BUILD_DIR/users.csv" > "$BUILD_DIR/user-policies.csv"
