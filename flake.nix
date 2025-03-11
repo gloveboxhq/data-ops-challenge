@@ -24,9 +24,16 @@
 
       buildPhase = ''
         mkdir -p $out
-
-        cd $src
-        BUILD_DIR=$out ./transform.bash
+        mkdir workdir
+        # Copy files without preserving permissions
+        cp -r --no-preserve=mode $src/* workdir/
+        cd workdir
+        mkdir build
+        # Now chmod should work
+        chmod +x transform.bash
+        # Run using bash explicitly
+        BUILD_DIR=$PWD/build bash transform.bash
+        cp -r build/* $out/
       '';
 
       doCheck = true;
