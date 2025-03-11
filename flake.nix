@@ -23,10 +23,16 @@
       src = ./.;
 
       buildPhase = ''
-        mkdir -p $out
-
-        cd $src
-        BUILD_DIR=$out ./transform.bash
+          mkdir -p $out
+          mkdir workdir
+          cp -r $src/* workdir/
+          cd workdir
+          mkdir build
+          # Attempt to set executable permission (ignore error if it fails)
+          chmod +x transform.bash || true
+          # Run the script using bash explicitly instead of relying on the shebang
+          BUILD_DIR=$PWD/build bash transform.bash
+          cp -r build/* $out/
       '';
 
       doCheck = true;
