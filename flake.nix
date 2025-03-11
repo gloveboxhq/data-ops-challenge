@@ -22,19 +22,20 @@
 
       src = ./.;
 
-      buildPhase = ''
-        mkdir -p $out
-        mkdir workdir
-        # Copy files without preserving permissions
-        cp -r --no-preserve=mode $src/* workdir/
-        cd workdir
-        mkdir build
-        # Now chmod should work
-        chmod +x transform.bash
-        # Run using bash explicitly
-        BUILD_DIR=$PWD/build bash transform.bash
-        cp -r build/* $out/
-      '';
+    buildPhase = ''
+      mkdir -p $out
+      mkdir workdir
+      cp -R --no-preserve=mode $src/* workdir/
+      cd workdir
+      mkdir build
+      echo "Before chmod:" 
+      ls -l transform.bash
+      chmod 755 transform.bash
+      echo "After chmod:" 
+      ls -l transform.bash
+      BUILD_DIR=$PWD/build bash transform.bash
+      cp -R build/* $out/
+    '';
 
       doCheck = true;
       checkPhase = ''
