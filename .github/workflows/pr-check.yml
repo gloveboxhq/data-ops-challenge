@@ -49,6 +49,9 @@ jobs:
               sudo systemctl start nix-daemon
             fi
 
+        - name: Fix permission
+          run: chmod +x ./transform.bash
+
         - name: run
           run: |
             export BUILD_DIR=$PWD/build
