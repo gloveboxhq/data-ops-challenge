@@ -22,12 +22,20 @@
 
       src = ./.;
 
-      buildPhase = ''
-        mkdir -p $out
-
-        cd $src
-        BUILD_DIR=$out ./transform.bash
-      '';
+    buildPhase = ''
+      mkdir -p $out
+      mkdir workdir
+      cp -R --no-preserve=mode $src/* workdir/
+      cd workdir
+      mkdir build
+      echo "Before chmod:" 
+      ls -l transform.bash
+      chmod 755 transform.bash
+      echo "After chmod:" 
+      ls -l transform.bash
+      BUILD_DIR=$PWD/build bash transform.bash
+      cp -R build/* $out/
+    '';
 
       doCheck = true;
       checkPhase = ''
