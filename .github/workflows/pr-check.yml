@@ -53,7 +53,10 @@ jobs:
           run: |
             export BUILD_DIR=$PWD/build
             mkdir -p $BUILD_DIR/
-
+            
+            # Set execute permission on the transform.bash script
+            chmod +x transform.bash
+            
             nix build --profile ./build/on-push-$(date +'%Y-%m-%d_%H-%M-%S') --no-sandbox
 
             find /nix/var/nix/gcroots | xargs ls -l
@@ -67,4 +70,4 @@ jobs:
             # move store to a place where the cache action can read it
             sudo mv /nix/store nix_store_dir
             sudo mv /nix/var/nix/db/db.sqlite nix_store_db.sqlite
-
+            
