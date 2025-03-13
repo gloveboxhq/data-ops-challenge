@@ -26,7 +26,6 @@
         mkdir -p $out
 
         cd $src
-        chmod +x ./transform.bash
         BUILD_DIR=$out ./transform.bash
       '';
 
