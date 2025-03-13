@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 set -euo pipefail
-
 jq -rs '
 	[ "user_id", "name", "email", "phone" ],
 	(
@@ -8,12 +7,11 @@ jq -rs '
 		.user_id as $id |
 		.name as $name | (
 			( .emails[] | [ $id , $name , .   , null ] ),
-			[ "TODO", "add", "phone", "here" ]
+			( .phones[] | [ $id , $name , null, . ] )
 		)
 	)
 	| @csv
 ' tests/input/users/*.json > $BUILD_DIR/users.csv
-
 jq -rs '
 	[ "user_id", "policy_number", "carrier", "policy_type", "effective_date", "expiration_date" ],
 	(
@@ -30,7 +28,5 @@ jq -rs '
 	| @csv
 ' tests/input/policies-by-user/*.json > $BUILD_DIR/policies.csv
 
-echo "TODO xsv join" | tee $BUILD_DIR/user-policies.csv
-
-
-
+# Join with all columns from both files, preserving duplicate user_id columns
+xsv join user_id $BUILD_DIR/policies.csv user_id $BUILD_DIR/users.csv > $BUILD_DIR/user-policies.csv
